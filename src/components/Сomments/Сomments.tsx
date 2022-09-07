@@ -12,7 +12,6 @@ function Сomments() {
 
   useEffect(() => {
     dispatch(setMessages())  
-    dispatch(setUsers())
   })
   
 

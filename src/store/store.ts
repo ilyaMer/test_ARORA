@@ -18,3 +18,5 @@ export const setupStore = () => {
 export type RootStateType = ReturnType<typeof rootReducer>
 export type AppStoreType = ReturnType<typeof setupStore>
 export type AppDispatchType = AppStoreType['dispatch']
+
+export const store = setupStore()
