@@ -3,12 +3,14 @@ import { setAuth } from "./authReducerAction";
 
 export interface AuthType {
     id: string
-    isLoading: boolean
+    isLoading: boolean,
+    error: string
 }
 
 const initialState: AuthType = {
     id: '',
-    isLoading: false
+    isLoading: false,
+    error: ''
 }
 
 export const authReduser = createSlice({
@@ -19,19 +21,15 @@ export const authReduser = createSlice({
     },
     extraReducers: {
         [setAuth.fulfilled.type]: (state, action) => {
-            // if (action.payload.password === state.password && action.payload.login === state.login) {
-            //     state.isAuth = true;
-            //     state.errorInput = ''
-            // } else state.errorInput = "Неверный логин или пароль"
-
-            // state.isLoading = false;
+            state.isLoading = false
+            state.id = action.payload.answer.me
         },
         [setAuth.pending.type]: (state, action) => {
-            // state.isLoading = true;
+            state.isLoading = true;
         },
         [setAuth.rejected.type]: (state, action) => {
-            // state.isLoading = true;
-            // state.error = action.payload
+            state.isLoading = true;
+            state.error = action.payload
         }
     }
 })

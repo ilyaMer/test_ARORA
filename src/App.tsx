@@ -1,18 +1,21 @@
-import React, { useEffect } from 'react'
-import { useAppDispatch } from './store/hooks/hooks'
-import { setAuth } from './store/reducers/authReducer/authReducerAction'
+import style from './App.module.css'
+import Headers from './components/Header/Headers';
+import Сomments from './components/Сomments/Сomments'
 
 function App() {
 
-    const dispatch = useAppDispatch()
-
-useEffect(() => {
-    dispatch(setAuth())
-}, [])
+  
 
 
   return (
-    <div>App</div>
+    <div className={style.app_wrapper}>
+      <header className={style.header}>
+        <Headers />
+      </header>
+      <main>
+        <Сomments />
+      </main>
+    </div>
   )
 }
 

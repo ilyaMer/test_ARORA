@@ -1,12 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { authApi } from "../../../api/api-auth"
 import { userApi } from "../../../api/api-user"
 
-export const setAuth = createAsyncThunk(
-    'auth/isAuth',
+export const setUsers = createAsyncThunk(
+    'users/setUsers',
     async (_, thunkAPI) => {
         try {
-            return authApi.auth()
+            return userApi.getUsers()
         } catch (error) {
             return thunkAPI.rejectWithValue("Нет соединения")
         }

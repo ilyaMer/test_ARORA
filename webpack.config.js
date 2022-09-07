@@ -1,9 +1,8 @@
 const path = require('path');
-const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.tsx',
   module: {
     rules: [
@@ -15,14 +14,13 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
-      },
+      }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './front/index.html'
-    }),
-    new HtmlMinimizerPlugin(),
+    })
   ],
   devServer: {
     static: {
@@ -33,6 +31,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+  },
+  performance:{
+    hints: false
   },
   output: {
     filename: '[name].js',

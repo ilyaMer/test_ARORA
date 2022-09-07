@@ -10,7 +10,7 @@ interface AnswerType {
     users: UsersType[]
 }
 
-interface GetUsersType {
+export interface GetUsersType {
     answer: AnswerType
     error: {
         conde: number
