@@ -22,7 +22,8 @@ export const authReduser = createSlice({
     extraReducers: {
         [setAuth.fulfilled.type]: (state, action) => {
             state.isLoading = false
-            state.id = action.payload.answer.me
+            console.log(action.payload.answer.me.id)
+            state.id = action.payload.answer.me.id
         },
         [setAuth.pending.type]: (state, action) => {
             state.isLoading = true;

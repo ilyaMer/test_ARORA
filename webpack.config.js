@@ -10,7 +10,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/i,
         loader: 'file-loader',
         options: {
-          outputPath: 'images',
+          outputPath: 'file',
         },
       },
       {
@@ -37,9 +37,9 @@ module.exports = {
     port: 8000,
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js']
   },
-  performance:{
+  performance: {
     hints: false
   },
   output: {

@@ -7,9 +7,9 @@ function Headers() {
 
   const dispatch = useAppDispatch()
 
-  // useEffect(() => {
-  //   dispatch(setAuth())
-  // })
+  useEffect(() => {
+    dispatch(setAuth())
+  }, [])
 
   return (
     <div className={style.headers}>

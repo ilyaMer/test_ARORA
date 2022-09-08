@@ -1,3 +1,4 @@
+import { Avatar, Grid, Paper } from "@material-ui/core";
 import moment from 'moment'
 import { useAppSelector } from '../../store/hooks/hooks'
 import { CommentsType } from '../../store/reducers/commentsReducer/commentsReducer'
@@ -7,8 +8,6 @@ function Comment(props: CommentsType) {
 
     const { isLoading, error, users } = useAppSelector(state => state.users)
 
-    console.log(users)
-
     const userName = isLoading ? "" : users.find(item => item.id === props.author)
 
     const humanDateFormat = moment(props.timestamp * 1000).format("MMM Do YY")
@@ -16,24 +15,22 @@ function Comment(props: CommentsType) {
     return (
         <>
             <li className={style.comment}>
-                <div className={style.comment__img}>
-                    <img src="" alt="" width={'50px'} />
-                </div>
-                <div className={style.comment__right_side}>
-                    <div className={style.comment__header}>
-                        <div className={style.comment__name}>
-                            {userName ? decodeURI(userName.name) : 'Аноним'}
-                        </div>
-                        <time className={style.comment__date}>{humanDateFormat}</time>
-                    </div>
-                    <p className={style.comment__body}>
-                        {decodeURI(props.message).replace('%3F', '?').replace('%2C', ',')}
-                    </p>
-                    <div className={style.comment__footer}>
-                        <button className={style.comment_btn + style.comment_btn_default}>Ответить</button>
-                    </div>
-                </div>
-                <hr className={style.comment__line}/>
+                <Paper style={{ padding: "40px 20px", marginTop: 10, width: "80%" }}>
+                    <Grid container wrap="nowrap" spacing={2}>
+                        <Grid item>
+                            <Avatar alt="Remy Sharp" src={userName ? userName.image : ''}/>
+                        </Grid>
+                        <Grid item xs zeroMinWidth>
+                            <h4 style={{ margin: 0, textAlign: "left" }}>{userName ? decodeURI(userName.name) : 'Аноним'}</h4>
+                            <p style={{ textAlign: "left" }}>
+                                {decodeURI(props.message).replace('%3F', '?').replace('%2C', ',')}{" "}
+                            </p>
+                            <p style={{ textAlign: "left", color: "gray" }}>
+                                {humanDateFormat}
+                            </p>
+                        </Grid>
+                    </Grid>
+                </Paper>
             </li >
         </>
     )
